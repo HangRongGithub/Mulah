@@ -1,0 +1,33 @@
+import csv
+import pandas as pd
+
+# Open the CSV file
+with open('Table_Input.csv') as csv_file:
+    csv_reader = csv.reader(csv_file, delimiter=',')
+
+    # Print the table header
+    print('<table>')
+    print('<tr>')
+    print('<th>Index #</th>')
+    print('<th>Value</th>')
+    print('</tr>')
+
+    # Loop through each row of the CSV file and print a table row
+    for row in csv_reader:
+        print('<tr>')
+        print(f'<td>{row[0]}</td>')
+        print(f'<td>{row[1]}</td>')
+        print('</tr>')
+
+ # Print the table footer
+    print('</table>')
+
+# Create a pandas dataframe with the given values
+df = pd.DataFrame({'Category': ['Alpha', 'Beta', 'Charlie'],
+                   'Value': ['A5 + A20', 'A15 / A7', 'A13 * A12']})
+
+# Convert the dataframe to HTML and display it on the website
+html_table = df.to_html(index=False)
+print(html_table)
+
+
